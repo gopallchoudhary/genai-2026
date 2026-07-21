@@ -39,5 +39,6 @@ async function init() {
         `,
 	});
 
-	console.log(result.output_parsed);
+	console.log(result.output_parsed.risks[0].tags);
 }
+init()
