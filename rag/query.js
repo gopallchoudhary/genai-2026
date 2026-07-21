@@ -1,8 +1,8 @@
 import { OpenAIEmbeddings } from "@langchain/openai";
 import { QdrantVectorStore } from "@langchain/qdrant";
 import { OpenAI } from "openai";
-import 'dotenv/config'
-
+import "dotenv/config";
+import { hyde } from "./hyde.js";
 
 const client = new OpenAI({
 	apiKey: process.env.OPENROUTER_API_KEY,
@@ -28,10 +28,11 @@ async function query(userQuery) {
 		},
 	);
 
-    
+	const hydeResponse = await hyde(userQuery);
+	console.log(`Hyde Response: ${hydeResponse}`);
 
 	const vectorRetriever = vectorStore.asRetriever({ k: 5 });
-	const results = await vectorRetriever.invoke(userQuery);
+	const results = await vectorRetriever.invoke(hydeResponse);
 
 	const SYSTEM_PROMPT = `
         You are an expert in answereing user query based on the provided context  about document.
