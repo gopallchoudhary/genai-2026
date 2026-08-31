@@ -20,11 +20,11 @@ const client = new OpenAI({
 
 async function init() {
 	const stream = await client.responses.create({
-		model: "gpt-4o-mini",
+		model: "openrouter/free",
 		input: [
 			{
 				role: "user",
-				content: "say 'double bubble bath' ten times fast",
+				content: "What is hoisting in javascript? explain with example.",
 			},
 		],
 		stream: true,

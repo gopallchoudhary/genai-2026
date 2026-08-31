@@ -14,13 +14,13 @@ const outputSchema = z.object({
 });
 
 const client = new OpenAI({
-	apiKey: process.env.OPENROUTER_API_KEY,
-	baseURL: process.env.OPENROUTER_BASE_URL,
+	apiKey: process.env.OPENCODE_API_KEY,
+	baseURL: process.env.OPENCODE_BASE_URL,
 });
 
 async function init() {
 	const result = await client.responses.parse({
-		model: "gpt-4o-mini",
+		model: "deepseek-v4-flash-free",
 		text: {
 			format: zodTextFormat(outputSchema, "risks"),
 		},

@@ -1,6 +1,6 @@
 import { OpenAIEmbeddings } from "@langchain/openai";
 import { QdrantVectorStore } from "@langchain/qdrant";
-import { OpenAI } from "openai";
+import OpenAI from "openai";
 import "dotenv/config";
 import { hyde } from "./hyde.js";
 

@@ -1,5 +1,5 @@
 import { OpenAI } from "openai";
-import 'dotenv/config';
+import "dotenv/config";
 const client = new OpenAI({
 	apiKey: process.env.OPENROUTER_API_KEY,
 	baseURL: process.env.OPENROUTER_BASE_URL,
@@ -7,9 +7,13 @@ const client = new OpenAI({
 
 async function main() {
 	const response = await client.chat.completions.create({
-		model: "gpt-4o-mini",
-		messages: [{ role: "user", content: "Tell me what is 2 + 2" }],
+		model: "gpt-4o",
+		messages: [{ role: "user", content: "Which is greater 9.11 or 9.8" }],
 	});
 
-    console.log('Response from OpenAI: ' + response.data.choices[0].message.content);
+	console.log(
+		"Response from OpenAI: " + response.choices[0].message.content,
+	);
 }
+
+main();
